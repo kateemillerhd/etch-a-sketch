@@ -1,0 +1,7 @@
+modules = ["web"]
+run = "npx serve"
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npx serve"]
