@@ -13,7 +13,18 @@ function createGrid(size) {
     square.style.height = `${squareSize}px`;
 
     square.addEventListener("mouseenter", () => {
-      square.style.backgroundColor = "black";
+      if (!square.style.backgroundColor) {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        square.style.opacity = 0.1;
+      } else {
+        let currentOpacity = parseFloat(square.style.opacity) || 0;
+        if (currentOpacity < 1) {
+          square.style.opacity = currentOpacity + 0.1;
+        }
+      }
     });
 
     container.appendChild(square);
